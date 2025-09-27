@@ -64,8 +64,8 @@ python router.py
 
 ## 📖 About 
 
-**Team Name:** The Maximus
-**Members:** Rithu Deep, Nandana S, Sreya Lekshmi, Aison Yesudas, Rajan Athul, Alan Francis    
+**Team Name:** The Maximus  
+**Members:** Rithu Deep, Nandana S, Sreya Lekshmi, Aison Yesudas, Rajan Athul, Alan Francis  
 **College:** Marian College of Engineering, Kerala, India  
 **Batch:** 2023 – 2027  
 **Department:** Artificial Intelligence and Machine Learning  
