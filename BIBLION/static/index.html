@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIBLION</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #e0e0e0;
+      background: linear-gradient(-45deg, #270219, #7d1751cc, #3c4d54, #7079df);
+      background-size: 400% 400%;
+      animation: gradientMove 5s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e4dbe1;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      transition: 0.3s;
+    }
+
+    h1:hover {
+      color: #66e0ff;
+      text-shadow: 0 0 20px rgba(0,195,255,0.9);
+      transform: scale(1.05);
+    }
+
+    .search-container {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.6);
+      display: flex;
+      gap: 10px;
+      width: 500px;
+      transition: 0.3s;
+    }
+
+    .search-container:hover {
+      box-shadow: 0px 4px 25px rgba(0,195,255,0.5);
+      transform: scale(1.02);
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      flex: 1;
+      background: #2a2a2a;
+      color: #e0e0e0;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:hover { box-shadow: 0 0 8px rgba(0,195,255,0.6); }
+    input[type="text"]:focus { box-shadow: 0 0 12px rgba(0,195,255,0.8); border: 1px solid #00c3ff; }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: linear-gradient(45deg, #00c3ff, #0078d7);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover { transform: scale(1.1); box-shadow: 0 0 12px rgba(0,195,255,0.8); }
+
+    #output {
+      margin-top: 25px;
+      width: 500px; /* Increased width */
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* Step-by-step gap between messages */
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 12px 15px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.6);
+      max-width: 100%;
+      word-wrap: break-word;
+      transition: 0.3s;
+    }
+
+    .user { 
+      background: #0078d7;
+      align-self: flex-end;
+      color: white;
+    }
+
+    .bot { 
+      background: #1e1e1e;
+      align-self: flex-start;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>BIBLION</h1>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Type a book name...">
+    <button onclick="search()">Search</button>
+  </div>
+
+  <div id="output"></div>
+<script>
+async function search() {
+  const query = document.getElementById("searchInput").value.trim();
+  const outputDiv = document.getElementById("output");
+
+  if (query === "") return;
+
+  // Create and append user message
+  const userMsg = document.createElement("div");
+  userMsg.className = "message user";
+  userMsg.innerHTML = query;
+  outputDiv.appendChild(userMsg);
+
+  // Clear input
+  document.getElementById("searchInput").value = "";
+
+  // Scroll to bottom
+  outputDiv.scrollTop = outputDiv.scrollHeight;
+
+  try {
+    const response = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: query })
+    });
+
+    const data = await response.json();
+
+    // Create bot message
+    const botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+
+    if (data.reply) {
+      // Format the reply for readability
+      let formatted = data.reply
+        .replace(/\*\*(.*?)\*\*/g, '$1')  // remove **bold**
+        .replace(/\d+\.\s?/g, '\n')       // break at numbered lists
+        .replace(/\n{2,}/g, '\n');        // remove extra blank lines
+
+      // Convert each line into <p> for better spacing
+      formatted = formatted
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => `<p>${line}</p>`)
+        .join('');
+
+      botMsg.innerHTML = formatted;
+    } else if (data.error) {
+      botMsg.innerHTML = `❌ Error: ${data.error}`;
+    }
+
+    outputDiv.appendChild(botMsg);
+
+    // Scroll to bottom after bot reply
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+
+  } catch (err) {
+    const errorMsg = document.createElement("div");
+    errorMsg.className = "message bot";
+    errorMsg.innerHTML = `❌ Network error: ${err.message || err}`;
+    outputDiv.appendChild(errorMsg);
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+  }
+}
+
+// Trigger search on Enter key
+document.getElementById("searchInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") search();
+});
+</script>
+
+</body>
+</html>
