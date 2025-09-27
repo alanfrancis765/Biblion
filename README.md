@@ -47,7 +47,7 @@ Just type a book’s name, and the chatbot provides:
 ## :rocket:Quick start
 
 # Clone repo
-git clone https://github.com/your-username/biblion.git
+git [clone https://github.com/your-username/biblion.git](https://github.com/alanfrancis765/Biblion.git)
 cd biblion
 
 # Setup venv 
