@@ -1,2 +1,73 @@
-# Biblion
-Biblion is an AI-powered chatbot that helps you explore the world of books. Just type a book’s name,
+![BIBLION]()
+
+<div align="center"> 
+  
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)  
+![Flask](https://img.shields.io/badge/flask-000000?style=for-the-badge&logo=flask&logoColor=white)  
+![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)  
+![CSS3](https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  
+![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  
+
+</div>
+
+---
+
+## :dart: Usage
+
+Biblion is an AI-powered chatbot that helps you explore the world of books.
+Just type a book’s name, and the chatbot provides:
+- Title
+- Author
+- Publication Year
+- Genre
+- Summary
+
+---
+
+## :sparkles: Features
+
+- Real-time AI responses using Google Gemini (via OpenRouter)
+- Beautiful dark theme UI with animated background
+- Step-by-step chat-style conversation bubbles
+- Works seamlessly with Flask backend + HTML/CSS/JS frontend
+- Expandable to include more book insights, recommendations, and ratings 
+
+---
+
+## :wrench: Dependencies
+
+- Python 🐍  
+- Flask ⚡
+- Requests 🌍
+- OpenRouter API 🤖
+- HTML / CSS / JavaScript 🎨
+
+---
+
+## :rocket:Quick start
+
+# Clone repo
+git clone https://github.com/your-username/biblion.git
+cd biblion
+
+# Setup venv (optional)
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate on Windows
+
+# Install Flask
+pip install flask requests
+
+# Run backend
+python router.py
+
+# Open browser at http://127.0.0.1:5000
+
+---
+
+## 📖 About 
+
+- **Members:** Rithu Deep, Nandana S, Sreya Lekshmi, Aison Yesudas, Rajan Athul, Alan Francis    - **College:** Marian College of Engineering, Kerala, India  
+- **Batch:** 2023 – 2027  
+- **Department:** Artificial Intelligence and Machine Learning  
+
+
