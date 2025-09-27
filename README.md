@@ -49,7 +49,7 @@ Just type a book’s name, and the chatbot provides:
 
 # Clone repo
 ```bash
-git [clone https://github.com/your-username/biblion.git](https://github.com/alanfrancis765/Biblion.git)
+gh repo clone alanfrancis765/Biblion
 ```
 ---
 
