@@ -1,4 +1,4 @@
-![BIBLION]()
+![BIBLION](src/Books.gif)
 
 <div align="center"> 
   
@@ -50,7 +50,7 @@ Just type a book’s name, and the chatbot provides:
 git clone https://github.com/your-username/biblion.git
 cd biblion
 
-# Setup venv (optional)
+# Setup venv 
 python -m venv venv
 source venv/bin/activate   # or venv\Scripts\activate on Windows
 
@@ -60,14 +60,13 @@ pip install flask requests
 # Run backend
 python router.py
 
-# Open browser at http://127.0.0.1:5000
-
 ---
 
 ## 📖 About 
 
-- **Members:** Rithu Deep, Nandana S, Sreya Lekshmi, Aison Yesudas, Rajan Athul, Alan Francis    - **College:** Marian College of Engineering, Kerala, India  
-- **Batch:** 2023 – 2027  
-- **Department:** Artificial Intelligence and Machine Learning  
+**Team Name:** The Maximus
+**Members:** Rithu Deep, Nandana S, Sreya Lekshmi, Aison Yesudas, Rajan Athul, Alan Francis     **College:** Marian College of Engineering, Kerala, India  
+**Batch:** 2023 – 2027  
+**Department:** Artificial Intelligence and Machine Learning  
 
 
