@@ -48,18 +48,29 @@ Just type a book’s name, and the chatbot provides:
 ## :rocket:Quick start
 
 # Clone repo
+```bash
 git [clone https://github.com/your-username/biblion.git](https://github.com/alanfrancis765/Biblion.git)
+```
+---
 
 # Setup venv 
+```bash
 python -m venv venv
+
 source venv/bin/activate   # or venv\Scripts\activate on Windows
+```
+---
 
 # Install Flask
+```bsh
 pip install flask requests
+```
+---
 
 # Run backend
+```bash
 python router.py
-
+```
 ---
 
 ## 📖 About 
